@@ -553,7 +553,7 @@ func (c *ApiController) Login() {
 
 					user = &object.User{
 						Owner:             application.Organization,
-						Name:              userInfo.Username,
+						Name:              util.ReturnAnyNotEmpty(userInfo.Username, userInfo.DisplayName, userInfo.Id),
 						CreatedTime:       util.GetCurrentTime(),
 						Id:                util.GenerateId(),
 						Type:              "normal-user",
